@@ -1,0 +1,103 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding-top: 50px;
+}
+
+.container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.mx-15 {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.my-15 {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.m-15 {
+    margin: 15px;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+}
+
+.header{
+    background: #333;
+    height: 50px;
+    padding: 0 15px;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+}
+
+.footer {
+    color: #fff;
+    background: #333;
+}
+
+.main-menu {
+    display: flex;
+}
+
+.main-menu > div{
+    margin-left: 15px;
+}
+
+.card {
+    border: 1px solid #333;
+    background: #eee;
+    text-align: center;
+    height: 300px;
+    width: 100%;
+}
+
+.column {
+    width: 25%;
+}
+
+.mr-15 {
+    margin-right: 15px;
+}
+
+@media only screen and (max-width: 765px) {
+    .column-wrapper {
+        flex-direction: column;
+    }
+
+    .column {
+        width: 100%;
+        padding: 15px;
+    }
+
+    p {
+        padding: 15px;
+    }
+}
