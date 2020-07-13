@@ -7,12 +7,6 @@ body {
     padding-top: 50px;
 }
 
-.container {
-    width: 100%;
-    max-width: 1440px;
-    margin: 0 auto;
-}
-
 .d-flex {
     display: flex;
 }
@@ -79,22 +73,22 @@ body {
     width: 100%;
 }
 
-.column {
-    width: 25%;
-}
-
 .mr-15 {
     margin-right: 15px;
+}
+
+.image-wrapper {
+    background: #000;
+    position: relative;
+}
+
+.image-wrapper img {
+    width: 100%;
 }
 
 @media only screen and (max-width: 765px) {
     .column-wrapper {
         flex-direction: column;
-    }
-
-    .column {
-        width: 100%;
-        padding: 15px;
     }
 
     p {
