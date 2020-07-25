@@ -41,9 +41,12 @@
                     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <form class="form-inline my-2 my-lg-0" id="searchForm">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="searchInput" disabled>
+                <button class="btn btn-outline-success my-2 my-sm-0 search-btn" type="submit" disabled>
+                    <span class="btn-text">Search</span>
+                    <span class="spinner-border spinner-border-sm custom-spinner" role="status" aria-hidden="true" id="spinner"></span>
+                </button>
             </form>
         </div>
     </nav>
@@ -62,23 +65,54 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <div class="image-wrapper">
-                        <img src="./logoup.png" alt="logo">
-                        <div class="text-wrapper">
-                            Continut promo
-                        </div>
+                    <!-- Button trigger modal -->
+                    <div>
+                        <button type="button" class="btn btn-primary custom-btn" data-toggle="modal" data-target="#exampleModal">
+                            Launch static backdrop modal
+                        </button>
+
+                    </div>
+                    <!-- Button trigger modal -->
+                    <div>
+                        <button type="button" class="btn btn-primary custom-btn" data-toggle="modal" data-target="#exampleModal">
+                            Launch static backdrop modal 22
+                        </button>
+                    </div>
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1" value="test" data-customer-id="123">
+                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                    </div>
+                    <div class="form-group form-check">
+                        <input type="radio" name="radio1" class="form-check-input" id="exampleCheck2">
+                        <label class="form-check-label" for="exampleCheck2">Check me out</label>
+                    </div>
+                    <div class="form-group form-check">
+                        <input type="radio" name="radio1" class="form-check-input" id="exampleCheck3">
+                        <label class="form-check-label" for="exampleCheck3">Check me out</label>
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="card">
+                    <div class="card" id="focusInput">
                         <h4>Test1</h4>
                     </div>
                 </div>
             </div>
             <div class="row mt-4">
                 <div class="col-md-4">
-                    <div class="card">
-                        <h4>Test1</h4>
+                    <div class="form-group">
+                        <div>
+                            <input type="text">
+                        </div>
+                        <input type="text">
+                    </div>
+                    <div>
+                        <ul>
+                            <li>sadasd</li>
+                            <li>asdasd</li>
+                            <li>asdasd</li>
+                            <li>asdasd</li>
+                            <li>asdasd</li>
+                        </ul>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -201,9 +235,118 @@
         </div>
     </div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal meu</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h1> Modalul meu</h1>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="searchModalLabel">Modal cautare</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h1>Modal cautare</h1>
+                <p class="search-text"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <!--<script src="./js/bootstrap.js"></script>-->
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script>
+    $('#exampleModal').on('hidden.bs.modal', function (e) {
+        // do something...
+        $('.custom-btn').addClass('another-class');
+    });
+
+    $('#exampleModal').on('shown.bs.modal', function (e) {
+        $('.custom-btn').removeClass('another-class');
+    });
+
+    $('.card').on('click', function(e) {
+        // const btn = $('.custom-btn');
+        //
+        // if(btn.hasClass('another-class')){
+        //     btn.removeClass('another-class');
+        // } else {
+        //     btn.addClass('another-class');
+        // }
+
+        $('.custom-btn').toggleClass('another-class');
+    });
+
+    $('#focusInput').on('click', function (e) {
+        $('#searchInput').focus();
+        console.log($('#exampleCheck1').prop('checked', true));
+    });
+
+    $('#searchInput').on('input', function (e) {
+        const search = $(this).val();
+        $('.search-btn').prop("disabled", !search.length);
+    });
+
+    $('#searchInput').on('change', function (e) {
+        console.log('ON CHANGE')
+    });
+
+    $('#searchForm').on('submit', function (event) {
+        event.preventDefault();
+
+        $('.btn-text').text('Loading...');
+        $('#spinner').removeClass('custom-spinner');
+
+        setTimeout(function () {
+            $('#searchModal').modal('show');
+            $('.search-text').text($('#searchInput').val());
+        }, 3000);
+    });
+
+    $('#searchModal').on('hidden.bs.modal', function (e) {
+        $('#searchInput').val('');
+    });
+
+    $('#searchModal').on('shown.bs.modal', function (e) {
+        $('.btn-text').text('Search');
+        $('#spinner').addClass('custom-spinner');
+    });
+
+    $('#exampleCheck1').on('change', function (e) {
+        const dataObject = $(this).data();
+        dataObject.test = 'test';
+        console.log(dataObject);
+        if ($(this).is(":checked")) {
+            $('#searchInput').prop("disabled", false);
+        } else {
+            $('#searchInput').prop("disabled", true);
+        }
+    });
+</script>
 </body>
 </html>

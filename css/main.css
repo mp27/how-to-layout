@@ -71,6 +71,12 @@ body {
     text-align: center;
     height: 300px;
     width: 100%;
+    transition: all .3s linear;
+}
+
+.card:hover {
+    background: #0b2e13;
+    transform: scale(1.3);
 }
 
 .mr-15 {
@@ -84,6 +90,34 @@ body {
 
 .image-wrapper img {
     width: 100%;
+}
+
+.custom-btn {
+    font-size: 12px;
+}
+
+.custom-btn.another-class {
+    background: #101113;
+}
+
+.custom-spinner {
+    display: none;
+}
+
+input:checked + label {
+    color: red;
+}
+
+.form-group > input {
+    border: 1px solid red;
+}
+
+ul li:nth-child(2n + 1){
+    color: red;
+}
+
+input {
+    width: calc(100% - 30px);
 }
 
 @media only screen and (max-width: 765px) {
