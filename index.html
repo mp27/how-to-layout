@@ -82,8 +82,8 @@
                     </div>
                     <!-- Button trigger modal -->
                     <div>
-                        <button type="button" class="btn btn-primary" >
-                            Launch static backdrop modal
+                        <button type="button" class="btn btn-primary fetch-products" >
+                            Fetch test update
                         </button>
 
                     </div>
@@ -131,9 +131,7 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card">
-                        <h4>Test1</h4>
-                    </div>
+                   <div id="product-list"></div>
                 </div>
                 <div class="col-md-4">
                     <div class="card">
@@ -296,6 +294,30 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 <script>
+    function productTemplate(product) {
+        return `<div class="product-card">
+                    <div><strong>ID: </strong>${product.id}</div>
+                    <div><strong>Nume: </strong>${product.name}</div>
+                    <div><strong>Pret: </strong>${product.price} RON</div>
+                </div>`
+    }
+
+    function fetchProducts() {
+        $('#product-list').html('');
+        fetch('products.json').then(function (response) {
+            return response.json();
+        }).then(function (json) {
+            const products = json.products;
+            products.forEach(function (product, index) {
+                $('#product-list').append(productTemplate(product));
+            });
+            // for (var i = 0; i < products.length; i++) {
+            //     console.log(products[i]);
+            // }
+        });
+    }
+
+
     $('#exampleModal').on('hidden.bs.modal', function (e) {
         // do something...
         $('.custom-btn').addClass('another-class');
@@ -366,6 +388,14 @@
     $('.toggle-drawer').on('click', function () {
         $('.drawer-wrapper').toggleClass('active');
         $('body').toggleClass('drawer-open');
+    });
+
+    $('.fetch-products').on('click', function () {
+       fetchProducts();
+    });
+
+    $(document).ready(function () {
+        fetchProducts();
     });
 </script>
 </body>
