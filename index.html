@@ -304,9 +304,27 @@
 
     function fetchProducts() {
         $('#product-list').html('');
+        const call = new Promise(function (resolve, reject) {
+            setTimeout(function () {
+                resolve('acesta este raspunsul');
+            }, 3000)
+        });
+
+        call.then((raspunsulNostru) => {
+            console.log(raspunsulNostru);
+        })
+
+        console.log('before fetch')
         fetch('products.json').then(function (response) {
-            return response.json();
+            console.log('before json')
+            return response.json().then((jsn) => {
+                return {
+                    products: jsn.products,
+                    test: 'test'
+                }
+            });
         }).then(function (json) {
+            console.log('on json', json)
             const products = json.products;
             products.forEach(function (product, index) {
                 $('#product-list').append(productTemplate(product));
@@ -315,6 +333,7 @@
             //     console.log(products[i]);
             // }
         });
+        console.log('after fetch')
     }
 
 
@@ -395,7 +414,9 @@
     });
 
     $(document).ready(function () {
-        fetchProducts();
+        setInterval(function () {
+            fetchProducts();
+        }, 10000);
     });
 </script>
 </body>
